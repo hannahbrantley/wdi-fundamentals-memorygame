@@ -24,13 +24,16 @@ let cards = [
 ];
 
 let cardsInPlay = [];
+let score = 0;
 
 function checkForMatch() {
 	if (cardsInPlay[0] === cardsInPlay[1]) {
 		alert("You found a match!");
+		score = score + 1;
 	} else { 
 		alert("Sorry, try again.");
 		}
+	document.getElementById('scoreboard').textContent = "Score: " + score;
 	}
 
 let resetButton = null;
@@ -82,10 +85,9 @@ function createBoard() {
 
 
 
-//const button = document.getElementsByTagName('button')[0];
-//button.addEventListener('click', reset);
-
 createBoard();
+
+
 
 
 
