@@ -33,18 +33,59 @@ function checkForMatch() {
 		}
 	}
 
-function flipCard(cardID) {
+let resetButton = null;
+
+function reset() {
+	for (let i = 0; i < cards.length; i++) {
+		cardsInPlay.pop();
+		document.getElementsByTagName('img')[i].setAttribute('src', 'images/back.png');
+	}
+	document.getElementById('reset-button').removeChild(resetButton);
+	resetButton = null;
+};
+
+function createResetButton() {
+	resetButton = document.createElement('button');
+	resetButton.textContent = "Reset";
+	resetButton.setAttribute('type', 'button');
+	document.getElementById('reset-button').appendChild(resetButton);
+	resetButton.addEventListener('click', reset);
+}
+
+function flipCard() {
+	let cardID = this.getAttribute('data-id');
 	console.log("User flipped " + cards[cardID].rank);
 	cardsInPlay.push(cards[cardID].rank);
 	console.log(cards[cardID].cardImage);
 	console.log(cards[cardID].suit);
+	this.setAttribute('src', cards[cardID].cardImage);
 	if (cardsInPlay.length === 2) {
 	checkForMatch();
 	}
+	if (resetButton == null) {
+		createResetButton();
+	}
 };
 
-flipCard(0);
-flipCard(2);
+
+let cardElement;
+
+function createBoard() {
+	for (let i = 0; i < cards.length; i++) {
+		cardElement = document.createElement('img');
+		cardElement.setAttribute('src', 'images/back.png');
+		cardElement.setAttribute('data-id', i);
+		document.getElementById('game-board').appendChild(cardElement);
+		cardElement.addEventListener('click', flipCard);
+	}
+};
+
+
+
+//const button = document.getElementsByTagName('button')[0];
+//button.addEventListener('click', reset);
+
+createBoard();
 
 
 

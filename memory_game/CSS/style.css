@@ -76,6 +76,21 @@ footer {
 	font-weight: 500;
 }
 
+button {
+	font-family: 'Raleway', sans-serif;
+	text-transform: uppercase;
+	background-color: #00A6B3;
+	color: white;
+	font-size: 20px;
+	font-weight: 600;
+	border-radius: 4px;
+}
+
+button:hover {
+	background-color: white;
+	color: #00A6B3;
+}
+
 .copyright {
 	font-family: 'Raleway', sans-serif;
 	float: left;
